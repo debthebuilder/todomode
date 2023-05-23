@@ -1,0 +1,44 @@
+:root {
+    --primary: #F083B1;
+    --secondary: #e2f4ff;
+    --dark: rgb(38, 37, 37);
+    --radius: 7px;
+    --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+}
+
+
+h1 {
+    margin: 20px 0;
+    text-align: center;
+    color: rgb(38, 37, 37);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 40px;
+    margin: 20px auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow); 
+}
+
+.input {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid var(--dark);
+    border-radius: 5px;
+    color: var(--dark);
+    background-color: transparent;
+}
+
+.input:focus {
+    outline: 1px solid var(--primary);
+}
+
+@media screen and (max-width: 600px){
+    .form {
+        
+        width: 85%;
+    }
+}

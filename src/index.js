@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from "react-router-dom";
-import './index.css';
+import './Assets/Styles/globals.css';
 import router from './Routes';
 import reportWebVitals from './reportWebVitals';
-import ThemeProvider
- from './Context/Theme';
+import {
+  AuthProvider,
+  ThemeProvider,
+  UserProvider
+} from "./Context"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <UserProvider>
+          <RouterProvider router={router} />
+        </UserProvider>
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

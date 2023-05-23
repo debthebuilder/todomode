@@ -3,7 +3,7 @@ import React, { useContext, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext, UserContext } from "../../Context";
 import { Button, Form } from "../../Components";
-const Login = () => {
+const ForgotPassword = () => {
     const navigate = useNavigate();
     const {email, setEmail, password, setPassword } = useContext(AuthContext);
     const [error, setError] = useState('');
@@ -31,24 +31,17 @@ const Login = () => {
                 <div>{success}</div>
             : null }
             <Form.Container>
-                <h1>Welcome Back</h1>
+                <h1>Forgot Password</h1>
                 <Form.Input
                 type="email" 
                 name="email" 
-                placeholder="Your Email" 
+                placeholder="Enter Your Email" 
                 handleChange={(e) =>  setEmail(e.target.value)}
                 req={true} 
                 />
-                <Form.Input
-                type="password" 
-                name="password" 
-                placeholder="Your Password" 
-                handleChange={(e) =>  setPassword(e.target.value)}
-                req={true} 
-                />
-                <Button type="submit" onClick={signIn} label={'Log In'} />
+                <Button type="submit" onClick={signIn} label={'Send Password Link'} />
                 <div className="flex-between mt-10">
-                <Link to={"/forgot-password"} className="link">Forgot Password</Link>
+                <Link to={"/login"} className="link">Back</Link>
                 <Link to={"/register"} className="link">New User</Link>
                 </div>
                 
@@ -58,4 +51,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default ForgotPassword;
