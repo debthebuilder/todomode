@@ -8,6 +8,11 @@ export const Form = {
             </form>
         )
     },
+    Label: ({labelFor, title}) => {
+        return(
+            <label htmlFor={labelFor} className="label">{title}</label>
+        )
+    },
     Input: ({type, name, placeholder, handleChange, req}) => {
         return(
             <input 
@@ -20,5 +25,12 @@ export const Form = {
             />
         )
         
+    },
+    Select: ({children}) => {
+        return(
+            <select className="input">
+                {children}
+            </select>
+        )
     }
 }

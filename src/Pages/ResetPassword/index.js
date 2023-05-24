@@ -5,18 +5,22 @@ import { AuthContext, UserContext } from "../../Context";
 import { Button, Form } from "../../Components";
 const ResetPassword = () => {
     const navigate = useNavigate();
-    const {email, setEmail, password, setPassword } = useContext(AuthContext);
+    const {email, password, setPassword } = useContext(AuthContext);
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    const signIn = (e) => {
+    const resetPassword = (e) => {
         e.preventDefault();
-        if(email === '' || password === ''){
-            setError("Email and Password is required");
-        } else {
+        if(password === '' || confirmPassword === ''){
+            setError("Password is required");
+        } else if (password !== confirmPassword){
+            setError("Passwords do not match");
+        }
+         else {
             console.log(email, password);
-            setSuccess('Login successful');
-            navigate('/dashboard');
+            setSuccess('Password Changed successful');
+            navigate('/login');
         }
     }
 
@@ -31,20 +35,22 @@ const ResetPassword = () => {
                 <div>{success}</div>
             : null }
             <Form.Container>
-                <h1>Forgot Password</h1>
+                <h1>Reset Password</h1>
                 <Form.Input
-                type="email" 
-                name="email" 
-                placeholder="Enter Your Email" 
-                handleChange={(e) =>  setEmail(e.target.value)}
+                type="password" 
+                name="password" 
+                placeholder="Password" 
+                handleChange={(e) =>  setPassword(e.target.value)}
                 req={true} 
                 />
-                <Button type="submit" onClick={signIn} label={'Send Password Link'} />
-                <div className="flex-between mt-10">
-                <Link to={"/login"} className="link">Back</Link>
-                <Link to={"/register"} className="link">New User</Link>
-                </div>
-                
+                <Form.Input
+                type="password" 
+                name="reset-password" 
+                placeholder="Retype Password" 
+                handleChange={(e) =>  setConfirmPassword(e.target.value)}
+                req={true} 
+                />
+                <Button type="submit" onClick={resetPassword} label={'Reset Password'} />
             </Form.Container>
             
         </div>

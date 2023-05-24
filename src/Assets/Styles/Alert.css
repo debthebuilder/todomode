@@ -1,0 +1,8 @@
+:root {
+    --error: "";
+    --success: "";
+}
+
+.alert {
+    width: 300px;
+}

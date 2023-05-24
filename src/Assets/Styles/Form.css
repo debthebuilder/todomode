@@ -1,7 +1,7 @@
 :root {
     --primary: #F083B1;
     --secondary: #e2f4ff;
-    --dark: rgb(38, 37, 37);
+    --dark: #0b344f;
     --radius: 7px;
     --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
 }
@@ -10,7 +10,14 @@
 h1 {
     margin: 20px 0;
     text-align: center;
-    color: rgb(38, 37, 37);
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark);
+    font-weight: 600;
+
 }
 
 .form {
@@ -21,8 +28,12 @@ h1 {
     margin: 20px auto;
     border-radius: var(--radius);
     box-shadow: var(--shadow); 
+    background-color: var(--secondary);
 }
 
+.form h1 {
+    text-align: center;
+}
 .input {
     margin-bottom: 30px;
     padding: 15px;
@@ -31,14 +42,27 @@ h1 {
     color: var(--dark);
     background-color: transparent;
 }
-
+option {
+    padding: 15px;
+}
 .input:focus {
     outline: 1px solid var(--primary);
+    border: 0;
 }
 
 @media screen and (max-width: 600px){
     .form {
-        
         width: 85%;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    .form {
+        background-color: var(--dark);
+        border: 1px solid var(--secondary);
+    }
+    .input {
+        border-color: var(--secondary);
+        color: var(--secondary);
+    }
+ }
