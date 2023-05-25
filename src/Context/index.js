@@ -1,22 +1,22 @@
 import React, { createContext, useState } from "react";
-import { Navigate } from "react-router-dom";
-
 
 export const AuthContext = createContext(undefined);
 export const ThemeContext = createContext(undefined);
 export const UserContext = createContext(undefined);
 
 function AuthProvider({ children }) {
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [persist, setPersist] = useState(JSON.parse(localStorage.getItem("persist")) || false);
 
     const handleLogout = () => {
         setIsLoggedIn(false);
     }
 
     return(
-        <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, email, setEmail, password, setPassword, handleLogout}}>
+        <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, username, setUsername, email, setEmail, password, setPassword, persist, setPersist, handleLogout}}>
             {children}
         </AuthContext.Provider>
     )

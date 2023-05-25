@@ -36,6 +36,7 @@ const Dashboard = () => {
     return(
         <Protected isLoggedIn={isLoggedIn}>
             <Layout 
+            username={user.username}
             activeTab={tab}
             title={title}
             today={todayTab}

@@ -6,7 +6,7 @@ import { Icon } from '@iconify/react';
 import { Button } from "../Button";
 import { Modal } from "../Modal";
 import { Form } from "../Form";
-export const Layout = ({children, activeTab, title, today, important, completed, uncompleted, all, categories}) => {
+export const Layout = ({username, children, activeTab, title, today, important, completed, uncompleted, all, categories}) => {
     const [close, setClose] = useState(false);
     const [modal, setModal] = useState(false);
     
@@ -36,7 +36,7 @@ export const Layout = ({children, activeTab, title, today, important, completed,
             : null}
             <div className={`main ${close ? 'ml-0' : 'ml-200'}`}>
                 <header className="header">
-                    <h1>Hello Debs</h1>
+                    <h1>Hello {username}</h1>
                     <div>
                         <button onClick={() => setClose(!close)}><Icon icon="ri:menu-3-fill" width={28} className="menu-icon" /></button>
                     </div>
